@@ -1,10 +1,22 @@
-var express      = require('express')
-var cookieParser = require('cookie-parser')
+var express = require('express');
+var app = express();
 
-var app = express()
-app.use(cookieParser())
+app.use(express.static('assets'));
+app.use(express.static('css'));
+app.use(express.static('js'));
 
-app.get('/', function(req, res) {
-   console.log("Cookies: ", req.cookies)
-})
-app.listen(8081)
+app.set('view engine', 'pug');
+app.set('views', './views');
+
+//Route handler
+app.get('/home', function (req, res) {
+    res.render('home_view');
+});
+
+app.get('/dynamic', function (req, res) {
+    res.render('dynamic_view', {
+        user: {name: "Ayush", age: "2"}
+    });
+});
+
+app.listen(3000);
