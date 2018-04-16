@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title User SignUp
+    body
+        if(message)
+        h4 #{message}
+            form(action="/signup", method="POST")
+                input(type="text", name="id", required, placeholder="User ID")
+                input(type="password", name="password", required, placeholder="Password")
+                button(type="submit") Sign me up!
